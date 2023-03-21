@@ -9,29 +9,6 @@ import axios from 'axios';
 
 
 //src/api/models.py
-const handleSubmit = async (event) => {
-  event.preventDefault();
-
-  try {
-    // Create a new User object
-    const newUser = new User({
-      name: name,
-      email: email,
-      password: password,
-      is_active: true, // or false, depending on your application logic
-    });
-
-    // Save the new User object to the database
-    await db.session.add(newUser);
-    await db.session.commit();
-
-    console.log("User saved to database:", newUser);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
 
 const SignUp = () => {
 
@@ -42,7 +19,27 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    actions.signUp(name,email,password)
+    try {
+      // Create a new User object
+      const newUser = {
+        name: name,
+        email: email,
+        password: password,
+        is_active: true, // or false, depending on your application logic
+      };
+  
+      // Save the new User object to the database
+      await db.session.add(newUser);
+      await db.session.commit();
+  
+      console.log("User saved to database:", newUser);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   /*const handleSubmit = async (event) => {
     event.preventDefault();
 
