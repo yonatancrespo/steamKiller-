@@ -5,7 +5,7 @@ import { Form, Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-//import { db, User } from 'py-loader!../../../api/models.py';
+import { db, User } from 'py-loader!../../../api/models.py';
 
 
 //src/api/models.py
